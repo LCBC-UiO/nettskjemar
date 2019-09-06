@@ -1,19 +1,19 @@
-# test_token <- "NETTSKJEMA_TEST_TOKEN"
-# test_form <- 123823
-#
-# test_that("token expiry check works", {
-#   expect_error(nettskjema_token_expiry("bla"),
-#                "does not exist")
-#
-#   skip_if_no_auth()
-#   expect_message(nettskjema_token_expiry(test_token),
-#                  "expires in")
-#
-#   suppressMessages(
-#     expect_equal(class(nettskjema_token_expiry(test_token)),
-#                  "Date"))
-#
-# })
+test_token <- "NETTSKJEMA_TEST_TOKEN"
+test_form <- 123823
+
+test_that("token expiry check works", {
+  expect_error(nettskjema_token_expiry("bla"),
+               "does not exist")
+
+  skip_on_ci()
+  expect_message(nettskjema_token_expiry(test_token),
+                 "expires in")
+
+  suppressMessages(
+    expect_equal(class(nettskjema_token_expiry(test_token)),
+                 "Date"))
+
+})
 #
 # test_that("nettskjema_token2renviron works",{
 #

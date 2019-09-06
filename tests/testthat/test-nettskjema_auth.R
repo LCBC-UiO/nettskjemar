@@ -14,51 +14,51 @@ test_that("token expiry check works", {
                  "Date"))
 
 })
-#
-# test_that("nettskjema_token2renviron works",{
-#
-#   # Get path to Renviron to check it's being written to
-#   Renviron_path <- usethis:::scoped_path_r(c("user", "project"),
-#                                            ".Renviron",
-#                                            envvar = "R_ENVIRON_USER")
-#
-#   # test create
-#   expect_message(nettskjema_token2renviron("mock_token", "MOCK_TOKEN_NAME"),
-#                  "added")
-#
-#   expect_true(any(grepl("MOCK_TOKEN_NAME=mock_token",
-#                         readLines(Renviron_path))))
-#
-#   expect_error(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME"),
-#                "already exists")
-#
-#   # test overwrite
-#   expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME",
-#                                            action = "overwrite"),
-#                  "forcing an overwrite")
-#   expect_true(any(grepl("MOCK_TOKEN_NAME=new_mock_token",
-#                         readLines(Renviron_path))))
-#   expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME2",
-#                                            action = "overwrite"),
-#                  "adding new token")
-#
-#
-#   # test delete
-#   expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME",
-#                             action = "delete"),
-#                  "Deleting token name")
-#   expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME2",
-#                                            action = "delete"),
-#                  "Deleting token name")
-#   expect_false(any(grepl("MOCK_TOKEN_NAME=new_mock_token",
-#                          readLines(Renviron_path))))
-#
-#   expect_error( nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME",
-#                                           action = "delete"),
-#                 "does not exist.")
-#
-# })
-#
+
+test_that("nettskjema_token2renviron works",{
+
+  # Get path to Renviron to check it's being written to
+  Renviron_path <- usethis:::scoped_path_r(c("user", "project"),
+                                           ".Renviron",
+                                           envvar = "R_ENVIRON_USER")
+
+  # test create
+  expect_message(nettskjema_token2renviron("mock_token", "MOCK_TOKEN_NAME"),
+                 "added")
+
+  expect_true(any(grepl("MOCK_TOKEN_NAME=mock_token",
+                        readLines(Renviron_path))))
+
+  expect_error(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME"),
+               "already exists")
+
+  # test overwrite
+  expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME",
+                                           action = "overwrite"),
+                 "forcing an overwrite")
+  expect_true(any(grepl("MOCK_TOKEN_NAME=new_mock_token",
+                        readLines(Renviron_path))))
+  expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME2",
+                                           action = "overwrite"),
+                 "adding new token")
+
+
+  # test delete
+  expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME",
+                            action = "delete"),
+                 "Deleting token name")
+  expect_message(nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME2",
+                                           action = "delete"),
+                 "Deleting token name")
+  expect_false(any(grepl("MOCK_TOKEN_NAME=new_mock_token",
+                         readLines(Renviron_path))))
+
+  expect_error( nettskjema_token2renviron("new_mock_token", "MOCK_TOKEN_NAME",
+                                          action = "delete"),
+                "does not exist.")
+
+})
+
 # test_that("api_auth  works",{
 #   skip_if_no_auth()
 #   tt <- api_auth(test_token)

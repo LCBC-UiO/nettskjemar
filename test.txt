@@ -1,0 +1,4 @@
+hallo
+Warning message:
+a warning 
+Error in rm(print_sink()) : ... must contain names or character strings

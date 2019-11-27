@@ -1,14 +1,14 @@
 as_user <- function(element){
   tibble::tibble(
-    username = purrr::map_chr(element, "username"),
-    name = purrr::map_chr(element, "name")
+    username = purrr::map_chr(element, "username", .default = NA),
+    name = purrr::map_chr(element, "name", .default = NA)
   )
 }
 
 as_element <- function(element){
   tmp <- tibble::tibble(
-    type = purrr::map_chr(element, "elementType"),
-    order = purrr::map_int(element, "sequence")
+    type = purrr::map_chr(element, "elementType", .default = NA),
+    order = purrr::map_int(element, "sequence",  .default = NA)
   )
 
   # pre-allocate space to populate
@@ -96,37 +96,37 @@ element_question <- function(el){
 
   # This should work when each field is returned, even empty ones
   # tibble::tibble(
-  #   question = strip_html(purrr::map_chr(el$questions, "description")),
-  #   question_codebook = purrr::map_chr(el$questions, "externalQuestionId"),
-  #   question_mandatory = purrr::map_lgl(el$questions, "mandatory")
+  #   question = strip_html(purrr::map_chr(el$questions, "description"), .default = NA),
+  #   question_codebook = purrr::map_chr(el$questions, "externalQuestionId", .default = NA),
+  #   question_mandatory = purrr::map_lgl(el$questions, "mandatory", .default = NA)
   # )
 }
 
 element_answeropts <- function(el){
   tibble::tibble(
-    answer_order = purrr::map_chr(el$answerOptions, "sequence"),
-    answer_option = purrr::map_chr(el$answerOptions, "text"),
-    answer_codebook = purrr::map_chr(el$answerOptions, "externalAnswerOptionId"),
-    answer_preselected = purrr::map_lgl(el$answerOptions, "preselected"),
-    answer_correct = purrr::map_lgl(el$answerOptions, "correct")
+    answer_order = purrr::map_chr(el$answerOptions, "sequence", .default = NA),
+    answer_option = purrr::map_chr(el$answerOptions, "text", .default = NA),
+    answer_codebook = purrr::map_chr(el$answerOptions, "externalAnswerOptionId", .default = NA),
+    answer_preselected = purrr::map_lgl(el$answerOptions, "preselected", .default = NA),
+    answer_correct = purrr::map_lgl(el$answerOptions, "correct", .default = NA)
   )
 }
 
 element_checkbox <- function(el){
   tibble::tibble(
-    order = purrr::map_chr(el, "sequence"),
-    text = strip_html(purrr::map_chr(el, "description")),
-    mandatory = purrr::map_chr(el, "mandatory")
+    order = purrr::map_chr(el, "sequence", .default = NA),
+    text = strip_html(purrr::map_chr(el, "description", .default = NA)),
+    mandatory = purrr::map_chr(el, "mandatory", .default = NA)
   )
 }
 
 element_matrix <- function(matrix_element){
   # This should work when each field is returned, even empty ones
   tibble::tibble(
-    question = purrr::map_chr(matrix_element$questions, "text"),
-    question_order = purrr::map_int(matrix_element$questions, "sequence"),
-    question_codebook = purrr::map_chr(matrix_element$questions, "externalQuestionId"),
-    question_mandatory = purrr::map_lgl(matrix_element$questions, "mandatory")
+    question = purrr::map_chr(matrix_element$questions, "text", .default = NA),
+    question_order = purrr::map_int(matrix_element$questions, "sequence", .default = NA),
+    question_codebook = purrr::map_chr(matrix_element$questions, "externalQuestionId", .default = NA),
+    question_mandatory = purrr::map_lgl(matrix_element$questions, "mandatory", .default = NA)
   )
 }
 

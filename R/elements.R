@@ -8,6 +8,9 @@ as_user <- function(element){
 as_element <- function(element){
   tmp <- tibble::tibble(
     type = purrr::map_chr(element, "elementType", .default = NA),
+    type = purrr::map_chr(element, "elementType", .default = NA),
+    type = purrr::map_chr(element, "elementType", .default = NA),
+    type = purrr::map_chr(element, "elementType", .default = NA),
     order = purrr::map_int(element, "sequence",  .default = NA)
   )
 

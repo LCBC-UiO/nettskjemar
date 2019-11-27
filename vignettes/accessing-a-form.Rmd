@@ -21,7 +21,7 @@ library(nettskjemar)
 Once you have [set up your API user and access token](), you need to also add your API user to the list of people that may access the form. 
 To do this, copy your API user name (i.e. `username@api`) and go to the form you would like to access in the Nettskjema portal.
 In the permissions (rettigheter) tab in the form, ass your user to the `Access to edit the form` field.
-![](/vignettes/static/add_user_to_form.png)
+![](static/add_user_to_form.png)
 
 Once this has been applied, your API user may access the form. 
 Please notice that the api-user is handled differently than your standard UiO user, and you will have to do this with **every** form you want to access through the API.
